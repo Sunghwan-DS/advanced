@@ -1,5 +1,7 @@
 package jsh.advanced.app.v1;
 
+import jsh.advanced.trace.TraceStatus;
+import jsh.advanced.trace.hellotrace.HelloTraceV1;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,10 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderControllerV1 {
 
     private final OrderServiceV1 orderServiceV1;
+    private final HelloTraceV1 trace;
 
     @GetMapping("/v1/request")
     public String request(String itemId) {
-        orderServiceV1.orderItem(itemId);
-        return "ok";
+
+        TraceStatus status = trace.begin("OrderController.request()");
+        try {
+            orderServiceV1.orderItem(itemId);
+            trace.end(status);
+            return "ok";
+        } catch (Exception e) {
+            trace.exception(status, e);
+            throw e;
+        }
     }
 }
