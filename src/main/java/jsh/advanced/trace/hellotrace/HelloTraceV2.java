@@ -29,8 +29,8 @@ public class HelloTraceV2 {
 
     public void end(TraceStatus status) {
         complete(status, null);
-
     }
+
     public void exception(TraceStatus status, Exception e) {
         complete(status, e);
     }
@@ -49,7 +49,7 @@ public class HelloTraceV2 {
     private String addSpace(String prefix, int level) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < level; i++) {
-            sb.append((i == level - 1) ? "|" + prefix : "|    ");
+            sb.append((i == level - 1) ? "|" + prefix : "|   ");
         }
         return sb.toString();
     }
