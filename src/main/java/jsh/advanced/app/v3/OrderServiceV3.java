@@ -1,8 +1,7 @@
 package jsh.advanced.app.v3;
 
-import jsh.advanced.trace.TraceId;
 import jsh.advanced.trace.TraceStatus;
-import jsh.advanced.trace.hellotrace.HelloTraceV2;
+import jsh.advanced.trace.logtrace.LogTrace;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +10,13 @@ import org.springframework.stereotype.Service;
 public class OrderServiceV3 {
 
     private final OrderRepositoryV3 orderRepositoryV3;
-    private final HelloTraceV2 trace;
+    private final LogTrace trace;
 
-    public void orderItem(TraceId traceId, String itemId) {
+    public void orderItem(String itemId) {
 
-        TraceStatus status = trace.beginSync(traceId, "OrderService.orderItem()");
+        TraceStatus status = trace.begin("OrderService.orderItem()");
         try {
-            orderRepositoryV3.save(status.getTraceId(), itemId);
+            orderRepositoryV3.save(itemId);
             trace.end(status);
         } catch (Exception e) {
             trace.exception(status, e);

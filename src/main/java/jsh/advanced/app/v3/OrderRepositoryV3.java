@@ -1,8 +1,7 @@
 package jsh.advanced.app.v3;
 
-import jsh.advanced.trace.TraceId;
 import jsh.advanced.trace.TraceStatus;
-import jsh.advanced.trace.hellotrace.HelloTraceV2;
+import jsh.advanced.trace.logtrace.LogTrace;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -10,11 +9,11 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class OrderRepositoryV3 {
 
-    private final HelloTraceV2 trace;
+    private final LogTrace trace;
 
-    public void save(TraceId traceId, String itemId) {
+    public void save(String itemId) {
 
-        TraceStatus status = trace.beginSync(traceId, "OrderRepository.save()");
+        TraceStatus status = trace.begin("OrderRepository.save()");
         //저장 로직
 
         try {
