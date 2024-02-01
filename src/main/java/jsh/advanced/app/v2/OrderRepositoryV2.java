@@ -1,5 +1,6 @@
 package jsh.advanced.app.v2;
 
+import jsh.advanced.trace.TraceId;
 import jsh.advanced.trace.TraceStatus;
 import jsh.advanced.trace.hellotrace.HelloTraceV2;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +12,9 @@ public class OrderRepositoryV2 {
 
     private final HelloTraceV2 trace;
 
-    public void save(String itemId) {
+    public void save(TraceId traceId, String itemId) {
 
-        TraceStatus status = trace.begin("OrderRepository.save()");
+        TraceStatus status = trace.beginSync(traceId, "OrderRepository.save()");
         //저장 로직
 
         try {
