@@ -2,6 +2,7 @@ package jsh.advanced.app.v4;
 
 import jsh.advanced.trace.TraceStatus;
 import jsh.advanced.trace.logtrace.LogTrace;
+import jsh.advanced.trace.template.AbstractTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,19 +14,18 @@ public class OrderRepositoryV4 {
 
     public void save(String itemId) {
 
-        TraceStatus status = trace.begin("OrderRepository.save()");
-        //저장 로직
-
-        try {
-            if (itemId.equals("ex")) {
-                throw new IllegalArgumentException("예외 발생!");
+        AbstractTemplate<Void> template = new AbstractTemplate<Void>(trace) {
+            @Override
+            protected Void call() {
+                //저장로직
+                if (itemId.equals("ex")) {
+                    throw new IllegalArgumentException("예외 발생!");
+                }
+                sleep(1000);
+                return null;
             }
-            sleep(1000);
-            trace.end(status);
-        } catch (Exception e) {
-            trace.exception(status, e);
-            throw e;
-        }
+        };
+        template.execute("OrderRepository.save()");
     }
 
     private void sleep(int millis) {
