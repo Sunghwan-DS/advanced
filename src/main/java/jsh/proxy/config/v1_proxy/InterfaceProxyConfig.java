@@ -10,7 +10,6 @@ import jsh.proxy.config.v1_proxy.interface_proxy.OrderControllerInterfaceProxy;
 import jsh.proxy.config.v1_proxy.interface_proxy.OrderRepositoryInterfaceProxy;
 import jsh.proxy.config.v1_proxy.interface_proxy.OrderServiceInterfaceProxy;
 import jsh.proxy.trace.logtrace.LogTrace;
-import jsh.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

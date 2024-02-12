@@ -8,7 +8,6 @@ import jsh.proxy.app.v1.OrderServiceV1;
 import jsh.proxy.app.v1.OrderServiceV1Impl;
 import jsh.proxy.config.v3_proxyfactory.advice.LogTraceAdvice;
 import jsh.proxy.trace.logtrace.LogTrace;
-import jsh.proxy.trace.logtrace.ThreadLocalLogTrace;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.framework.ProxyFactory;
