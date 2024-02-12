@@ -1,6 +1,6 @@
 package jsh.proxy.cglib;
 
-import jsh.proxy.common.ConcreteService;
+import jsh.proxy.common.service.ConcreteService;
 import jsh.proxy.cglib.code.TimeMethodInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

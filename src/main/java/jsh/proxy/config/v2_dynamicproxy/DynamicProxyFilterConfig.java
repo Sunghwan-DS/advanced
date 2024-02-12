@@ -8,7 +8,6 @@ import jsh.proxy.app.v1.OrderServiceV1;
 import jsh.proxy.app.v1.OrderServiceV1Impl;
 import jsh.proxy.config.v2_dynamicproxy.handler.LogTraceFilterHandler;
 import jsh.proxy.trace.logtrace.LogTrace;
-import jsh.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -45,10 +44,5 @@ public class DynamicProxyFilterConfig {
                                                                              new Class[]{OrderRepositoryV1.class},
                                                                              new LogTraceFilterHandler(orderRepository, logTrace, PATTERNS));
         return proxy;
-    }
-
-    @Bean
-    public LogTrace logTrace() {
-        return new ThreadLocalLogTrace();
     }
 }
