@@ -46,9 +46,4 @@ public class DynamicProxyFilterConfig {
                                                                              new LogTraceFilterHandler(orderRepository, logTrace, PATTERNS));
         return proxy;
     }
-
-    @Bean
-    public LogTrace logTrace() {
-        return new ThreadLocalLogTrace();
-    }
 }

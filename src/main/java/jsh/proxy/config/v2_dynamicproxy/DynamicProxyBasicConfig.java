@@ -44,9 +44,4 @@ public class DynamicProxyBasicConfig {
                                                                              new LogTraceBasicHandler(orderRepository, logTrace));
         return proxy;
     }
-
-    @Bean
-    public LogTrace logTrace() {
-        return new ThreadLocalLogTrace();
-    }
 }
