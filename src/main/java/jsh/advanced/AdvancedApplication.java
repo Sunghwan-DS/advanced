@@ -8,8 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-@Import(AopConfig.class)
-@SpringBootApplication(scanBasePackages = "jsh.proxy.app")
+@SpringBootApplication(scanBasePackages = "jsh.aop")
 public class AdvancedApplication {
 
     public static void main(String[] args) {
