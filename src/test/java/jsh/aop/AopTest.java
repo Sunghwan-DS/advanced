@@ -3,7 +3,7 @@ package jsh.aop;
 import jsh.advanced.AdvancedApplication;
 import jsh.aop.order.OrderRepository;
 import jsh.aop.order.OrderService;
-import jsh.aop.order.aop.AspectV2;
+import jsh.aop.order.aop.AspectV3;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 @Slf4j
-@Import(AspectV2.class)
+@Import(AspectV3.class)
 @SpringBootTest(classes = AdvancedApplication.class)
 public class AopTest {
 
