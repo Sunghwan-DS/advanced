@@ -2,6 +2,8 @@ package jsh.aop.pointcut;
 
 import jsh.aop.member.annotation.ClassAop;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +54,12 @@ public class AtTargetAtWithinTest {
     @Slf4j
     @Aspect
     static class AtTargetAtWithinAspect {
+
+        //@target: 인스턴스 기준으로 모든 메서드의 조인 포인트를 선정, 부모 타입의 메서드도 적용
+        @Around("execution(* jsh.aop..*(..)) && @target(jsh.aop.member.annotation.ClassAop)")
+        public Object atTarget(ProceedingJoinPoint joinPoint) throws Throwable {
+            log.info("[@target] {}", joinPoint.getSignature());
+            return joinPoint.proceed();
+        }
     }
 }
