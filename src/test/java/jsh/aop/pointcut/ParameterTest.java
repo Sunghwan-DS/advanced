@@ -56,5 +56,10 @@ public class ParameterTest {
         public void thisArgs(JoinPoint joinPoint, MemberService obj) {
             log.info("[this]{}, obj={}", joinPoint.getSignature(), obj.getClass());
         }
+
+        @Before("allMember() && target(obj)")
+        public void targetArgs(JoinPoint joinPoint, MemberService obj) {
+            log.info("[target]{}, obj={}", joinPoint.getSignature(), obj.getClass());
+        }
     }
 }
