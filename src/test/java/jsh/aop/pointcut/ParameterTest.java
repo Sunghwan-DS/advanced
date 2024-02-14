@@ -2,6 +2,7 @@ package jsh.aop.pointcut;
 
 import jsh.aop.member.MemberService;
 import jsh.aop.member.annotation.ClassAop;
+import jsh.aop.member.annotation.MethodAop;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -71,6 +72,11 @@ public class ParameterTest {
         @Before("allMember() && @within(annotation)")
         public void atWithin(JoinPoint joinPoint, ClassAop annotation) {
             log.info("[@within]{}, obj={}", joinPoint.getSignature(), annotation);
+        }
+
+        @Before("allMember() && @annotation(annotation)")
+        public void atAnnotation(JoinPoint joinPoint, MethodAop annotation) {
+            log.info("[@annotation]{}, annotationValue={}", joinPoint.getSignature(), annotation.value());
         }
     }
 }
