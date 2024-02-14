@@ -50,7 +50,7 @@ public class ParameterTest {
         }
 
         @Before("allMember() && args(arg, ..)")
-        public void logArgs2(Object arg) {
+        public void logArgs3(String arg) {
             log.info("[logArgs3] arg={}", arg);
         }
 
