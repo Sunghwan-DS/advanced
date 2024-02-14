@@ -1,6 +1,6 @@
 package jsh.aop;
 
-import jsh.advanced.AdvancedApplication;
+import jsh.AdvancedApplication;
 import jsh.aop.order.OrderRepository;
 import jsh.aop.order.OrderService;
 import jsh.aop.order.aop.AspectV6Advice;
