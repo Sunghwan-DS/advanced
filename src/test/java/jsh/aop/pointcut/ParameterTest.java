@@ -51,5 +51,10 @@ public class ParameterTest {
         public void logArgs2(Object arg) {
             log.info("[logArgs3] arg={}", arg);
         }
+
+        @Before("allMember() && this(obj)")
+        public void thisArgs(JoinPoint joinPoint, MemberService obj) {
+            log.info("[this]{}, obj={}", joinPoint.getSignature(), obj.getClass());
+        }
     }
 }
