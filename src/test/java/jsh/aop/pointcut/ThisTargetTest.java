@@ -40,10 +40,23 @@ public class ThisTargetTest {
             return joinPoint.proceed();
         }
 
+        //부모 타입 허용
+        @Around("target(jsh.aop.member.MemberService)")
+        public Object doTargetInterface(ProceedingJoinPoint joinPoint) throws Throwable {
+            log.info("[target-interface] {}", joinPoint.getSignature());
+            return joinPoint.proceed();
+        }
+
         //JDK 기반 프록시의 경우에는 AOP 대상이 아님
         @Around("this(jsh.aop.member.MemberServiceImpl)")
         public Object doThis(ProceedingJoinPoint joinPoint) throws Throwable {
             log.info("[this-impl] {}", joinPoint.getSignature());
+            return joinPoint.proceed();
+        }
+
+        @Around("target(jsh.aop.member.MemberServiceImpl)")
+        public Object doTarget(ProceedingJoinPoint joinPoint) throws Throwable {
+            log.info("[target-impl] {}", joinPoint.getSignature());
             return joinPoint.proceed();
         }
 
