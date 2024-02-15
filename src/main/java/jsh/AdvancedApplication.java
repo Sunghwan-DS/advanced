@@ -1,12 +1,10 @@
-package jsh.advanced;
+package jsh;
 
-import jsh.proxy.config.v6_aop.AopConfig;
 import jsh.proxy.trace.logtrace.LogTrace;
 import jsh.proxy.trace.logtrace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 
 @SpringBootApplication(scanBasePackages = "jsh.aop")
 public class AdvancedApplication {
